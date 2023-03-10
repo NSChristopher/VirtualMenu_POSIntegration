@@ -7,4 +7,9 @@
     <UserSecretsId>24762d8a-afd7-44db-a3a7-b8c85af8ebaf</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\API\API.csproj" />
+    <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj" />
+  </ItemGroup>
+
 </Project>

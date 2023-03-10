@@ -1,5 +1,6 @@
 using ClassLibrary;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace API.Controllers
 {
@@ -16,23 +17,23 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<Item>> GetCustomer(string storeId = "5c5981496bcf7500013afeb0")
+        public async Task<ActionResult<List<Item>>> GetMenuItems(string storeId = "63cb0968897d7676ffc0f916")
         {
 
             var client = _clientFactory.CreateClient("meta");
-
             try
             {
-                HttpResponseMessage response = await client.GetAsync(client.BaseAddress.ToString() + $"menuItem/615348c7c67b33d994771e8a");
+                HttpResponseMessage response = await client.GetAsync(client.BaseAddress.ToString() + $"store/{storeId}/menuItems");
                 response.EnsureSuccessStatusCode();
 
                 string responseBody = await response.Content.ReadAsStringAsync();
+                List<Item> item = JsonSerializer.Deserialize<List<Item>>(responseBody);
 
-                return responseBody;
+                return item;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return ex.Message;
+                throw;
             }
         }
 
