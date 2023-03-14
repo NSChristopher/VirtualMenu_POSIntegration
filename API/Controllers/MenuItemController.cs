@@ -1,5 +1,5 @@
-using ClassLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 using System.Text.Json;
 
 namespace API.Controllers

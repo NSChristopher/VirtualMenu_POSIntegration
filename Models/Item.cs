@@ -1,4 +1,4 @@
-﻿namespace ClassLibrary.Models
+﻿namespace Models
 {
     public class Item
     {
