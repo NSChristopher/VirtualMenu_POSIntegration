@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddHttpClient();
+//http named client with base address. used to get data from api to be displayed.
 builder.Services.AddHttpClient("meta", c =>
 {
     c.BaseAddress = new Uri(builder.Configuration.GetValue<string>("APISettings:APIUrl"));

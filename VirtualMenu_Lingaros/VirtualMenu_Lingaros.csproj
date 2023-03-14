@@ -13,7 +13,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\API\API.csproj" />
-    <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj" />
+    <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
