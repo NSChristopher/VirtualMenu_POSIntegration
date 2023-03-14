@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary
+namespace ClassLibrary.Models
 {
     public class Category
     {
         public string id { get; set; }
         public bool activeStatus { get; set; }
         public string name { get; set; }
-
     }
 }

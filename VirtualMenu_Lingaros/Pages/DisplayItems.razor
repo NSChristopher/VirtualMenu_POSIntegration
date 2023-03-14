@@ -1,0 +1,66 @@
+﻿@page "/Items"
+@inject IHttpClientFactory _clientFactory
+
+<h3>Display Items</h3>
+
+@if (items != null)
+{
+    <table class="table table-striped table-bordered bg-light">
+        <thead>
+            <th>name</th>
+            <th>Category</th>
+            <th>Price</th>
+        </thead>
+        <tbody>
+            @foreach (var item in items)
+            @if (item.activeStatus.Equals(true))
+            {
+                <tr>
+                    <td>@item.name</td>
+                    <td>@item.category.name</td>
+                    <td>@item.servingSizePrices.First().priceStr</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h4>@errorString</h4>
+}
+
+@code {
+    List<Item> items;
+    string errorString;
+
+    // Gets menu items from API on page initalization
+    protected override async Task OnInitializedAsync()
+    {
+        var client = _clientFactory.CreateClient("meta");
+
+        try
+        {
+            items = await client.GetFromJsonAsync<List<Item>>("MenuItem");
+        }
+        catch (Exception ex)
+        {
+            errorString = ex.Message;
+        }
+         
+        //    var request = new HttpRequestMessage(HttpMethod.Get,
+        //        "https://localhost:7248/API/MenuItem");
+
+        //    var client = _clientFactory.CreateClient();
+
+        //    HttpResponseMessage response = await client.SendAsync(request);
+
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        items = await response.Content.ReadFromJsonAsync<List<Item>>();
+        //    }
+        //    else
+        //    {
+        //        errorString = response.ReasonPhrase;
+        //    }
+    }
+}

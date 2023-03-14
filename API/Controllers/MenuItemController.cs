@@ -1,4 +1,4 @@
-using ClassLibrary;
+using ClassLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
@@ -17,13 +17,13 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Item>>> GetMenuItems(string storeId = "63cb0968897d7676ffc0f916")
+        public async Task<ActionResult<List<Item>>> GetMenuItems()
         {
 
             var client = _clientFactory.CreateClient("meta");
             try
             {
-                HttpResponseMessage response = await client.GetAsync(client.BaseAddress.ToString() + $"store/{storeId}/menuItems");
+                HttpResponseMessage response = await client.GetAsync(client.BaseAddress.ToString() + $"store/63cb0968897d7676ffc0f916/menuItems");
                 response.EnsureSuccessStatusCode();
 
                 string responseBody = await response.Content.ReadAsStringAsync();

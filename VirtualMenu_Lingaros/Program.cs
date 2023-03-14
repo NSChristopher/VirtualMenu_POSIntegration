@@ -1,18 +1,15 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using VirtualMenu_Lingaros.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddHttpClient();
 builder.Services.AddHttpClient("meta", c =>
 {
     c.BaseAddress = new Uri(builder.Configuration.GetValue<string>("APISettings:APIUrl"));
-    c.DefaultRequestHeaders.Add("apikey", builder.Configuration.GetValue<string>("APISettings:APIKey"));
-    c.DefaultRequestHeaders.Add("accept", "application/json");
 });
 
 var app = builder.Build();
