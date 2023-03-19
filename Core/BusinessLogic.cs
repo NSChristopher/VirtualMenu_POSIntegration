@@ -1,4 +1,4 @@
-﻿namespace Core
+﻿namespace VirtualMenu.Core
 {
     public class BusinessLogic
     {

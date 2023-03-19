@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMenu_Lingaros", "Vir
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{2ACE2337-44C5-4818-B1BF-1649B863568F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{3AD98F51-AA01-435D-89CB-4C7AED026C3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMenu.Core", "Core\VirtualMenu.Core.csproj", "{3AD98F51-AA01-435D-89CB-4C7AED026C3E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{8F1AE8C5-B2BE-4B30-9317-C78D6C43CC9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMenu.Models", "Models\VirtualMenu.Models.csproj", "{8F1AE8C5-B2BE-4B30-9317-C78D6C43CC9C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMenu.Data", "VirtualMenu.Data\VirtualMenu.Data.csproj", "{4A588C70-2CA0-4D1C-A255-43F53863272C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8F1AE8C5-B2BE-4B30-9317-C78D6C43CC9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F1AE8C5-B2BE-4B30-9317-C78D6C43CC9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F1AE8C5-B2BE-4B30-9317-C78D6C43CC9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A588C70-2CA0-4D1C-A255-43F53863272C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A588C70-2CA0-4D1C-A255-43F53863272C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A588C70-2CA0-4D1C-A255-43F53863272C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A588C70-2CA0-4D1C-A255-43F53863272C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

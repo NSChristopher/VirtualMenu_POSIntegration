@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Models;
+using VirtualMenu.Models;
 using System.Text.Json;
 
 namespace API.Controllers
@@ -17,13 +17,13 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Item>>> GetMenuItems()
+        public async Task<ActionResult<List<Item>>> GetMenuItems(string storeId = "63cb0968897d7676ffc0f916")
         {
 
             var client = _clientFactory.CreateClient("meta");
             try
             {
-                HttpResponseMessage response = await client.GetAsync(client.BaseAddress.ToString() + $"store/63cb0968897d7676ffc0f916/menuItems");
+                HttpResponseMessage response = await client.GetAsync(client.BaseAddress.ToString() + $"store/{storeId}/menuItems");
                 response.EnsureSuccessStatusCode();
 
                 string responseBody = await response.Content.ReadAsStringAsync();

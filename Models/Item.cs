@@ -1,4 +1,4 @@
-﻿namespace Models
+﻿namespace VirtualMenu.Models
 {
     public class Item
     {
