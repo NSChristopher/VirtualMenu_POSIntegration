@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMenu.Models", "Model
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMenu.Data", "VirtualMenu.Data\VirtualMenu.Data.csproj", "{4A588C70-2CA0-4D1C-A255-43F53863272C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMenu.Abstractions", "VirtualMenu.Abstractions\VirtualMenu.Abstractions.csproj", "{D6B48155-6151-4E2A-9CC0-FB0379F4D39A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{4A588C70-2CA0-4D1C-A255-43F53863272C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A588C70-2CA0-4D1C-A255-43F53863272C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A588C70-2CA0-4D1C-A255-43F53863272C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6B48155-6151-4E2A-9CC0-FB0379F4D39A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6B48155-6151-4E2A-9CC0-FB0379F4D39A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6B48155-6151-4E2A-9CC0-FB0379F4D39A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6B48155-6151-4E2A-9CC0-FB0379F4D39A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

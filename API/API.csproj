@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Core\VirtualMenu.Core.csproj" />
     <ProjectReference Include="..\Models\VirtualMenu.Models.csproj" />
+    <ProjectReference Include="..\VirtualMenu.Abstractions\VirtualMenu.Abstractions.csproj" />
     <ProjectReference Include="..\VirtualMenu.Data\VirtualMenu.Data.csproj" />
   </ItemGroup>
 
