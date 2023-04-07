@@ -1,4 +1,6 @@
-﻿namespace VirtualMenu.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace VirtualMenu.Models
 {
     public class Item
     {

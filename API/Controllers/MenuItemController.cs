@@ -16,8 +16,8 @@ namespace API.Controllers
             _clientFactory = clientFactory;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<List<Item>>> GetMenuItems(string storeId = "63cb0968897d7676ffc0f916")
+        [HttpPost]
+        public async Task<ActionResult<string>> SaveMenuItems(string storeId = "63cb0968897d7676ffc0f916")
         {
 
             var client = _clientFactory.CreateClient("meta");
@@ -29,7 +29,7 @@ namespace API.Controllers
                 string responseBody = await response.Content.ReadAsStringAsync();
                 List<Item> item = JsonSerializer.Deserialize<List<Item>>(responseBody);
 
-                return item;
+                return response.ReasonPhrase;
             }
             catch (Exception)
             {

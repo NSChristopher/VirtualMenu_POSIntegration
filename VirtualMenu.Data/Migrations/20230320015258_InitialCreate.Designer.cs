@@ -12,7 +12,7 @@ using VirtualMenu.Data;
 namespace VirtualMenu.Data.Migrations
 {
     [DbContext(typeof(MenuContext))]
-    [Migration("20230318215517_InitialCreate")]
+    [Migration("20230320015258_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace VirtualMenu.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Models.Category", b =>
+            modelBuilder.Entity("VirtualMenu.Models.Category", b =>
                 {
                     b.Property<string>("id")
                         .HasColumnType("nvarchar(450)");
@@ -42,7 +42,7 @@ namespace VirtualMenu.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Models.Item", b =>
+            modelBuilder.Entity("VirtualMenu.Models.Item", b =>
                 {
                     b.Property<string>("id")
                         .HasColumnType("nvarchar(450)");
@@ -76,13 +76,10 @@ namespace VirtualMenu.Data.Migrations
                     b.ToTable("Items");
                 });
 
-            modelBuilder.Entity("Models.ServingSizePrice", b =>
+            modelBuilder.Entity("VirtualMenu.Models.ServingSizePrice", b =>
                 {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                    b.Property<string>("id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Itemid")
                         .HasColumnType("nvarchar(450)");
@@ -102,9 +99,9 @@ namespace VirtualMenu.Data.Migrations
                     b.ToTable("ServingSizePrices");
                 });
 
-            modelBuilder.Entity("Models.Item", b =>
+            modelBuilder.Entity("VirtualMenu.Models.Item", b =>
                 {
-                    b.HasOne("Models.Category", "category")
+                    b.HasOne("VirtualMenu.Models.Category", "category")
                         .WithMany()
                         .HasForeignKey("categoryid")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -113,14 +110,14 @@ namespace VirtualMenu.Data.Migrations
                     b.Navigation("category");
                 });
 
-            modelBuilder.Entity("Models.ServingSizePrice", b =>
+            modelBuilder.Entity("VirtualMenu.Models.ServingSizePrice", b =>
                 {
-                    b.HasOne("Models.Item", null)
+                    b.HasOne("VirtualMenu.Models.Item", null)
                         .WithMany("servingSizePrices")
                         .HasForeignKey("Itemid");
                 });
 
-            modelBuilder.Entity("Models.Item", b =>
+            modelBuilder.Entity("VirtualMenu.Models.Item", b =>
                 {
                     b.Navigation("servingSizePrices");
                 });

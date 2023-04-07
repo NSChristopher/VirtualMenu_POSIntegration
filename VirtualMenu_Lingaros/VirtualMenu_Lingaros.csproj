@@ -15,12 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.4">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="System.Net.Http.Json" Version="7.0.0" />
   </ItemGroup>
 
@@ -28,6 +22,7 @@
     <ProjectReference Include="..\API\API.csproj" />
     <ProjectReference Include="..\Models\VirtualMenu.Models.csproj" />
     <ProjectReference Include="..\Core\VirtualMenu.Core.csproj" />
+    <ProjectReference Include="..\VirtualMenu.Data\VirtualMenu.Data.csproj" />
   </ItemGroup>
 
 </Project>

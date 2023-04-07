@@ -11,9 +11,6 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddHttpClient();
 //http named client with base address. used to get data from api to be displayed.
 
-builder.Services.AddDbContext<MenuContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("MenuDBConnection")));
-
 builder.Services.AddHttpClient("meta", c =>
 {
     c.BaseAddress = new Uri(builder.Configuration.GetValue<string>("APISettings:APIUrl"));

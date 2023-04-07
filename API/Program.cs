@@ -10,9 +10,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<MenuContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("MenuDBConnection")));
-
 builder.Services.AddHttpClient("meta", c =>
 {
     c.BaseAddress = new Uri(builder.Configuration.GetValue<string>("APISettings:APIUrl"));
@@ -20,6 +17,8 @@ builder.Services.AddHttpClient("meta", c =>
     c.DefaultRequestHeaders.Add("accept", "application/json");
 });
 
+builder.Services.AddDbContext<MenuContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("MenuDBConnection")));
 
 var app = builder.Build();
 
