@@ -28,6 +28,8 @@
     <ProjectReference Include="..\API\API.csproj" />
     <ProjectReference Include="..\Models\VirtualMenu.Models.csproj" />
     <ProjectReference Include="..\Core\VirtualMenu.Core.csproj" />
+    <ProjectReference Include="..\VirtualMenu.Abstractions\VirtualMenu.Abstractions.csproj" />
+    <ProjectReference Include="..\VirtualMenu.Data\VirtualMenu.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,11 @@
+using API;
+using API.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using System.Net.Http.Headers;
+using VirtualMenu.Abstractions;
 using VirtualMenu.Data;
+using VirtualMenu.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,15 +15,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddControllers();
 
 builder.Services.AddDbContext<MenuContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("MenuDBConnection")));
 
 builder.Services.AddHttpClient("meta", c =>
 {
-    c.BaseAddress = new Uri(builder.Configuration.GetValue<string>("APISettings:APIUrl"));
-    c.DefaultRequestHeaders.Add("apikey", builder.Configuration.GetValue<string>("APISettings:APIKey"));
-    c.DefaultRequestHeaders.Add("accept", "application/json");
+    c.BaseAddress = new Uri(ApiEndpoints.BaseAddress);
 });
 
 
