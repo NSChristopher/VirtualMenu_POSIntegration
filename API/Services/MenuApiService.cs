@@ -15,18 +15,67 @@ namespace API.Services
             _clientFactory = clientFactory;
             _apiSettings = apiSettings;
         }
-        public async Task<List<Item>> GetMenuItemsAsync()
+        public async Task<Item> GetMenuItemAsync(string itemId)
         {
-            var client = _clientFactory.CreateClient("meta");
+            HttpClient client = _clientFactory.CreateClient();
+            HttpRequestMessage request = new HttpRequestMessage();
+            request.RequestUri = new Uri(ApiEndpoints.BaseAddress + string.Format(ApiEndpoints.GetMenuItem, itemId));
+            request.Headers.Add("apikey", _apiSettings.APIKey);
+
             try
             {
-                HttpResponseMessage response = await client.GetAsync(string.Format(ApiEndpoints.GetMenuItems, _apiSettings.StoreId));
+                HttpResponseMessage response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Item item = JsonSerializer.Deserialize<Item>(responseBody);
+
+                return item;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<List<Item>> GetMenuItemsAsync()
+        {
+            HttpClient client = _clientFactory.CreateClient();
+            HttpRequestMessage request = new HttpRequestMessage();
+            request.RequestUri = new Uri(ApiEndpoints.BaseAddress + string.Format(ApiEndpoints.GetMenuItems, _apiSettings.StoreId));
+            request.Headers.Add("apikey", _apiSettings.APIKey);
+
+            try
+            {
+                HttpResponseMessage response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
 
                 string responseBody = await response.Content.ReadAsStringAsync();
                 List<Item> items = JsonSerializer.Deserialize<List<Item>>(responseBody);
 
                 return items;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public async Task<string> GetMenuItemDescriptionAsync(string itemId)
+        {
+            HttpClient client = _clientFactory.CreateClient();
+            HttpRequestMessage request = new HttpRequestMessage();
+            request.RequestUri = new Uri(ApiEndpoints.BaseAddress + string.Format(ApiEndpoints.GetMenuItem, itemId));
+            request.Headers.Add("apikey", _apiSettings.APIKey);
+
+            try
+            {
+                HttpResponseMessage response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Item item = JsonSerializer.Deserialize<Item>(responseBody);
+
+                return item.description;
             }
             catch (Exception)
             {

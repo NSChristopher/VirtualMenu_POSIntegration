@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VirtualMenu.Data;
 
@@ -11,9 +12,11 @@ using VirtualMenu.Data;
 namespace VirtualMenu.Data.Migrations
 {
     [DbContext(typeof(MenuContext))]
-    partial class MenuContextModelSnapshot : ModelSnapshot
+    [Migration("20230611145301_ChangServingSizePricestoList")]
+    partial class ChangServingSizePricestoList
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,21 @@ namespace VirtualMenu.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ItemServingSizePrice", b =>
+                {
+                    b.Property<string>("itemId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("servingSizePricesservingSizeId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("itemId", "servingSizePricesservingSizeId");
+
+                    b.HasIndex("servingSizePricesservingSizeId");
+
+                    b.ToTable("ItemServingSizePrices", (string)null);
+                });
 
             modelBuilder.Entity("VirtualMenu.Models.Category", b =>
                 {
@@ -53,6 +71,7 @@ namespace VirtualMenu.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("imageURL")
@@ -76,14 +95,14 @@ namespace VirtualMenu.Data.Migrations
             modelBuilder.Entity("VirtualMenu.Models.ServingSizePrice", b =>
                 {
                     b.Property<string>("servingSizeId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
                         .HasAnnotation("Relational:JsonPropertyName", "id");
 
-                    b.Property<string>("itemId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("orderSequence")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -91,11 +110,28 @@ namespace VirtualMenu.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("servingSize")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("servingSizeId");
 
-                    b.HasIndex("itemId");
-
                     b.ToTable("ServingSizePrices");
+                });
+
+            modelBuilder.Entity("ItemServingSizePrice", b =>
+                {
+                    b.HasOne("VirtualMenu.Models.Item", null)
+                        .WithMany()
+                        .HasForeignKey("itemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VirtualMenu.Models.ServingSizePrice", null)
+                        .WithMany()
+                        .HasForeignKey("servingSizePricesservingSizeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("VirtualMenu.Models.Item", b =>
@@ -107,18 +143,6 @@ namespace VirtualMenu.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("category");
-                });
-
-            modelBuilder.Entity("VirtualMenu.Models.ServingSizePrice", b =>
-                {
-                    b.HasOne("VirtualMenu.Models.Item", null)
-                        .WithMany("servingSizePrices")
-                        .HasForeignKey("itemId");
-                });
-
-            modelBuilder.Entity("VirtualMenu.Models.Item", b =>
-                {
-                    b.Navigation("servingSizePrices");
                 });
 #pragma warning restore 612, 618
         }

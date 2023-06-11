@@ -1,10 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 
 namespace VirtualMenu.Models
 {
     public class Item
     {
-        public string id { get; set; }
+        [Key]
+        [JsonPropertyName("id")]
+        public string itemId { get; set; }
         public bool activeStatus { get; set; }
         public string name { get; set; }
         public Category category { get; set; }
@@ -13,7 +17,7 @@ namespace VirtualMenu.Models
         public string imageURL { get; set; }
 
         //custome field
-        public DateTime lastAccessed { get; set; }
+        public DateTime lastAccessed { get; set; } = DateTime.Now;
 
     }
 }

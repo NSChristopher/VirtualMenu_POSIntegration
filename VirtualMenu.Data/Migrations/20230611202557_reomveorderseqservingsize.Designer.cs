@@ -12,20 +12,15 @@ using VirtualMenu.Data;
 namespace VirtualMenu.Data.Migrations
 {
     [DbContext(typeof(MenuContext))]
-<<<<<<<< HEAD:VirtualMenu.Data/Migrations/20230320015258_InitialCreate.Designer.cs
-    [Migration("20230320015258_InitialCreate")]
-    partial class InitialCreate
-========
-    [Migration("20230328184942_InitalCreate")]
-    partial class InitalCreate
->>>>>>>> 2c48b973c91f79c6c5d190ca66a9e757a8a67ef8:VirtualMenu.Data/Migrations/20230328184942_InitalCreate.Designer.cs
+    [Migration("20230611202557_reomveorderseqservingsize")]
+    partial class reomveorderseqservingsize
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.4")
+                .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -49,8 +44,9 @@ namespace VirtualMenu.Data.Migrations
 
             modelBuilder.Entity("VirtualMenu.Models.Item", b =>
                 {
-                    b.Property<string>("id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("itemId")
+                        .HasColumnType("nvarchar(450)")
+                        .HasAnnotation("Relational:JsonPropertyName", "id");
 
                     b.Property<bool>("activeStatus")
                         .HasColumnType("bit");
@@ -60,7 +56,6 @@ namespace VirtualMenu.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("imageURL")
@@ -74,7 +69,7 @@ namespace VirtualMenu.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("itemId");
 
                     b.HasIndex("categoryid");
 
@@ -83,10 +78,12 @@ namespace VirtualMenu.Data.Migrations
 
             modelBuilder.Entity("VirtualMenu.Models.ServingSizePrice", b =>
                 {
-                    b.Property<string>("id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("servingSizeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)")
+                        .HasAnnotation("Relational:JsonPropertyName", "id");
 
-                    b.Property<string>("Itemid")
+                    b.Property<string>("itemId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("name")
@@ -97,9 +94,9 @@ namespace VirtualMenu.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("servingSizeId");
 
-                    b.HasIndex("Itemid");
+                    b.HasIndex("itemId");
 
                     b.ToTable("ServingSizePrices");
                 });
@@ -119,7 +116,7 @@ namespace VirtualMenu.Data.Migrations
                 {
                     b.HasOne("VirtualMenu.Models.Item", null)
                         .WithMany("servingSizePrices")
-                        .HasForeignKey("Itemid");
+                        .HasForeignKey("itemId");
                 });
 
             modelBuilder.Entity("VirtualMenu.Models.Item", b =>

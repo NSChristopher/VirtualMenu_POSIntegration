@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace VirtualMenu.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitalCreate : Migration
+    public partial class ChangServingSizePricestoICollection : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -25,10 +25,25 @@ namespace VirtualMenu.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ServingSizePrices",
+                columns: table => new
+                {
+                    servingSizeId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    orderSequence = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    servingSize = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    priceStr = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ServingSizePrices", x => x.servingSizeId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Items",
                 columns: table => new
                 {
-                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    itemId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     activeStatus = table.Column<bool>(type: "bit", nullable: false),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     categoryid = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -38,7 +53,7 @@ namespace VirtualMenu.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Items", x => x.id);
+                    table.PrimaryKey("PK_Items", x => x.itemId);
                     table.ForeignKey(
                         name: "FK_Items_Categories_categoryid",
                         column: x => x.categoryid,
@@ -48,22 +63,27 @@ namespace VirtualMenu.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ServingSizePrices",
+                name: "ItemServingSizePrices",
                 columns: table => new
                 {
-                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    priceStr = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Itemid = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    itemId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    servingSizePricesservingSizeId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ServingSizePrices", x => x.id);
+                    table.PrimaryKey("PK_ItemServingSizePrices", x => new { x.itemId, x.servingSizePricesservingSizeId });
                     table.ForeignKey(
-                        name: "FK_ServingSizePrices_Items_Itemid",
-                        column: x => x.Itemid,
+                        name: "FK_ItemServingSizePrices_Items_itemId",
+                        column: x => x.itemId,
                         principalTable: "Items",
-                        principalColumn: "id");
+                        principalColumn: "itemId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ItemServingSizePrices_ServingSizePrices_servingSizePricesservingSizeId",
+                        column: x => x.servingSizePricesservingSizeId,
+                        principalTable: "ServingSizePrices",
+                        principalColumn: "servingSizeId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -72,19 +92,22 @@ namespace VirtualMenu.Data.Migrations
                 column: "categoryid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ServingSizePrices_Itemid",
-                table: "ServingSizePrices",
-                column: "Itemid");
+                name: "IX_ItemServingSizePrices_servingSizePricesservingSizeId",
+                table: "ItemServingSizePrices",
+                column: "servingSizePricesservingSizeId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ServingSizePrices");
+                name: "ItemServingSizePrices");
 
             migrationBuilder.DropTable(
                 name: "Items");
+
+            migrationBuilder.DropTable(
+                name: "ServingSizePrices");
 
             migrationBuilder.DropTable(
                 name: "Categories");

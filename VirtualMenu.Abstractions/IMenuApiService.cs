@@ -10,5 +10,7 @@ namespace VirtualMenu.Abstractions
     public interface IMenuApiService
     {
         Task<List<Item>> GetMenuItemsAsync();
+        Task<Item> GetMenuItemAsync(string itemId);
+        Task<string> GetMenuItemDescriptionAsync(string itemId);
     }
 }

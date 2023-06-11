@@ -1,4 +1,4 @@
-﻿@inject IMenuApiService menuApiService
+﻿@inject IMenuCoreService MenuCore
 @page "/Items"
 
 <h3>Display Items</h3>
@@ -36,6 +36,7 @@ else
     // Gets menu items from API on page initalization
     protected override async Task OnInitializedAsync()
     {
-        items = await menuApiService.GetMenuItemsAsync();
+        items = await MenuCore.GetMenuItemsCoreAsync();
+        MenuCore.SaveMenuItemsCoreAsync();
     }
 }

@@ -16,5 +16,16 @@ namespace VirtualMenu.Data
         public DbSet<Item> Items { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<ServingSizePrice> ServingSizePrices { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ServingSizePrice>()
+                .Property(p => p.servingSizeId)
+                .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Item>()
+                .Property(b => b.description)
+                .IsRequired(false);
+        }
+
     }
 }
