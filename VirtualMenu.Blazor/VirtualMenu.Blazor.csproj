@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>ce06f583-0d30-4649-8f07-2e228fe12c1e</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Text.Json" Version="7.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VirtualMenu.Abstractions\VirtualMenu.Abstractions.csproj" />
+    <ProjectReference Include="..\VirtualMenu.Core\VirtualMenu.Core.csproj" />
+    <ProjectReference Include="..\VirtualMenu.Data\VirtualMenu.Data.csproj" />
+    <ProjectReference Include="..\VirtualMenu.LingaAPI\VirtualMenu.LingaAPI.csproj" />
+    <ProjectReference Include="..\VirtualMenu.Models\VirtualMenu.Models.csproj" />
+  </ItemGroup>
+
+</Project>

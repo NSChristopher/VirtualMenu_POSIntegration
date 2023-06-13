@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMenu_Lingaros", "VirtualMenu_Lingaros\VirtualMenu_Lingaros.csproj", "{D217BFB4-DBCB-4A31-90A6-E585569F4D09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMenu.LingaAPI", "VirtualMenu.LingaAPI\VirtualMenu.LingaAPI.csproj", "{2ACE2337-44C5-4818-B1BF-1649B863568F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{2ACE2337-44C5-4818-B1BF-1649B863568F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMenu.Core", "VirtualMenu.Core\VirtualMenu.Core.csproj", "{3AD98F51-AA01-435D-89CB-4C7AED026C3E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMenu.Core", "Core\VirtualMenu.Core.csproj", "{3AD98F51-AA01-435D-89CB-4C7AED026C3E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMenu.Models", "Models\VirtualMenu.Models.csproj", "{8F1AE8C5-B2BE-4B30-9317-C78D6C43CC9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMenu.Models", "VirtualMenu.Models\VirtualMenu.Models.csproj", "{8F1AE8C5-B2BE-4B30-9317-C78D6C43CC9C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMenu.Data", "VirtualMenu.Data\VirtualMenu.Data.csproj", "{4A588C70-2CA0-4D1C-A255-43F53863272C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMenu.Abstractions", "VirtualMenu.Abstractions\VirtualMenu.Abstractions.csproj", "{D6B48155-6151-4E2A-9CC0-FB0379F4D39A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMenu.Blazor", "VirtualMenu.Blazor\VirtualMenu.Blazor.csproj", "{BB51B0DA-421E-4FEB-B99B-4B64EF3C6B2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D217BFB4-DBCB-4A31-90A6-E585569F4D09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D217BFB4-DBCB-4A31-90A6-E585569F4D09}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D217BFB4-DBCB-4A31-90A6-E585569F4D09}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D217BFB4-DBCB-4A31-90A6-E585569F4D09}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2ACE2337-44C5-4818-B1BF-1649B863568F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2ACE2337-44C5-4818-B1BF-1649B863568F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ACE2337-44C5-4818-B1BF-1649B863568F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{D6B48155-6151-4E2A-9CC0-FB0379F4D39A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6B48155-6151-4E2A-9CC0-FB0379F4D39A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6B48155-6151-4E2A-9CC0-FB0379F4D39A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB51B0DA-421E-4FEB-B99B-4B64EF3C6B2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB51B0DA-421E-4FEB-B99B-4B64EF3C6B2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB51B0DA-421E-4FEB-B99B-4B64EF3C6B2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB51B0DA-421E-4FEB-B99B-4B64EF3C6B2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
